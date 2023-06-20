@@ -50,7 +50,7 @@
         /// <param name="left">A left <see cref="Point"/>.</param>
         /// <param name="right">A right <see cref="Point"/>.</param>
         /// <returns>true if the left <see cref="Point"/> is not equal to the right <see cref="Point"/>; otherwise, false.</returns>
-        public static bool operator !=(Point a, Point b) => !(a == b);
+        public static bool operator !=(Point left, Point right) => !(left == right);
 
         /// <summary>
         /// Converts the string representation of a point to its <see cref="Point"/> equivalent.
