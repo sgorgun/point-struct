@@ -65,17 +65,7 @@
             }
 
             var pointParts = pointString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            if (pointParts.Length != 2)
-            {
-                throw new ArgumentException("Point string must contain two parts separated by comma.", nameof(pointString));
-            }
-
-            if (!long.TryParse(pointParts[0], out long x))
-            {
-                throw new ArgumentException("Point string must contain two parts separated by comma.", nameof(pointString));
-            }
-
-            if (!long.TryParse(pointParts[1], out long y))
+            if (pointParts.Length != 2 || !long.TryParse(pointParts[0], out long x) || !long.TryParse(pointParts[1], out long y))
             {
                 throw new ArgumentException("Point string must contain two parts separated by comma.", nameof(pointString));
             }
@@ -98,17 +88,7 @@
             }
 
             var pointParts = pointString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            if (pointParts.Length != 2)
-            {
-                return false;
-            }
-
-            if (!long.TryParse(pointParts[0], out long x))
-            {
-                return false;
-            }
-
-            if (!long.TryParse(pointParts[1], out long y))
+            if (pointParts.Length != 2 || !long.TryParse(pointParts[0], out long x) || !long.TryParse(pointParts[1], out long y))
             {
                 return false;
             }
