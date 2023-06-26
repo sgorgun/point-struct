@@ -59,15 +59,21 @@
         /// <returns>A <see cref="Point"/> equivalent to the point contained in <paramref name="pointString"/>.</returns>
         public static Point Parse(string pointString)
         {
-            if (string.IsNullOrWhiteSpace(pointString))
-            {
-                throw new ArgumentException("Point string cannot be null or empty.", nameof(pointString));
-            }
+            var pointParts = pointString.Split(',');
 
-            var pointParts = pointString.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            if (pointParts.Length != 2 || !long.TryParse(pointParts[0], out long x) || !long.TryParse(pointParts[1], out long y))
+            if (pointParts.Length != 2)
             {
                 throw new ArgumentException("Point string must contain two parts separated by comma.", nameof(pointString));
+            }
+
+            if (!long.TryParse(pointParts[0], out long x))
+            {
+                throw new ArgumentException("Invalid value for x coordinate.", nameof(pointString));
+            }
+
+            if (!long.TryParse(pointParts[1], out long y))
+            {
+                throw new ArgumentException("Invalid value for y coordinate.", nameof(pointString));
             }
 
             return new Point(x, y);
